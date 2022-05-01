@@ -21,6 +21,7 @@ contract AdvancedCollectible is ERC721, VRFConsumerBase {
     mapping(bytes32 => address) public requestIdToSender;
     mapping(bytes32 => string) public requestIdToTokenURI;
     mapping(uint256 => Breed) public tokenIdToBreed;
+    mapping(uint256 => Traits) public tokenIdToTraits;
     mapping(bytes32 => uint256) public requestIdToTokenId;
     event RequestedCollectible(bytes32 indexed requestId);
     // New event from the video!
@@ -36,10 +37,11 @@ contract AdvancedCollectible is ERC721, VRFConsumerBase {
     )
         public
         VRFConsumerBase(_VRFCoordinator, _LinkToken)
-        ERC721("Dogie", "DOG")
+        ERC721("BMNft", "DOGgies")
     {
         tokenCounter = 0;
         keyHash = _keyhash;
+        // link fee for Oracle call
         fee = 0.1 * 10**18;
     }
 

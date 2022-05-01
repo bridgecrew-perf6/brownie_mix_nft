@@ -1,3 +1,4 @@
+from web3 import Web3
 from brownie import (
     network,
     accounts,
@@ -98,14 +99,15 @@ def get_breed(breed_number):
 
 
 def fund_with_link(
-    contract_address, account=None, link_token=None, amount=1000000000000000000
+    contract_address, account=None, link_token=None, amount=100000000000000000
 ):
     account = account if account else get_account()
     link_token = link_token if link_token else get_contract("link_token")
     tx = interface.LinkTokenInterface(link_token).transfer(
         contract_address, amount, {"from": account}
     )
-    print(f"Funded {contract_address}")
+
+    print(f"Funded {contract_address} with {Web3.fromWei(amount,'ether')} link")
     return tx
 
 

@@ -4,7 +4,7 @@ from scripts.helpful_scripts import get_breed, fund_with_link, listen_for_event
 import time
 
 
-def main():
+def create_collectible():
     dev = accounts.add(config["wallets"]["from_key"])
     advanced_collectible = AdvancedCollectible[len(AdvancedCollectible) - 1]
     fund_with_link(advanced_collectible.address)
@@ -20,3 +20,4 @@ def main():
     token_id = advanced_collectible.requestIdToTokenId(requestId)
     breed = get_breed(advanced_collectible.tokenIdToBreed(token_id))
     print("Dog breed of tokenId {} is {}".format(token_id, breed))
+    return transaction
