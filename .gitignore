@@ -4,6 +4,9 @@ build
 .env
 .DS*
 
+#project stuff
+metadata/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
